@@ -6,22 +6,37 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "ci:lint": "next lint --max-warnings 0 --fix --file",
+    "lint": "next lint --max-warnings 0 --fix",
+    "ci:format": "prettier -luw",
+    "format": "prettier -luw src",
+    "ci:stylelint": "stylelint --mw 0 --fix",
+    "stylelint": "stylelint --mw 0 --fix src/**/*.css",
+    "fix": "npm run format && npm run lint && npm run stylelint",
+    "prepare": "husky"
   },
   "dependencies": {
+    "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.4"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@eternalrival/prettier-config": "^0.1.5",
+    "@eternalrival/stylelint-config": "^0.1.2",
+    "@stylistic/eslint-plugin": "^2.12.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
-    "@eslint/eslintrc": "^3"
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "postcss": "^8",
+    "prettier": "^3.4.2",
+    "stylelint": "^16.12.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
